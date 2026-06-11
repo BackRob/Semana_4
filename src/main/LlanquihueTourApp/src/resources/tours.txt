@@ -1,1 +1,7 @@
 Tour1,escalada,1.0
+sdasd,jiji,20000
+asdas,   ,sdas
+sdasd, sdasd,1000
+sdasd,asdasd,asd
+edsfsd
+dfsdfd,reret,123,fgdf

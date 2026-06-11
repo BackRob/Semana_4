@@ -44,8 +44,8 @@ public class LoadTours {
                         if(tieneVacio == false){
 
                             try {
-                                double precio = Double.parseDouble(listAux[3]);
-                                listaTour.add(new Tour(listAux[1],listAux[2],precio));
+                                double precio = Double.parseDouble(listAux[2]);
+                                listaTour.add(new Tour(listAux[0],listAux[1],precio));
 
 
                             }catch (NumberFormatException e) {
@@ -55,6 +55,9 @@ public class LoadTours {
 
 
 
+                        }else{
+                            contadorError++;
+                            lineasError.append("Linea: ").append(linea).append("| N").append(contadorlineas).append("|Error: Contiene Vacio\n");
                         }
 
                     }else if(listAux.length>3){
@@ -81,6 +84,7 @@ public class LoadTours {
             lineasError.append("Error Fatal: Error al leer el archivo");
         }
 
+        lineasError.append("------------------------");
 
         if(contadorError ==0 ){
             lineasError.setLength(0);
