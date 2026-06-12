@@ -9,7 +9,9 @@ public class SaveTours {
     public static void GuardarDatos(Tour tour){
 
         try(BufferedWriter escribir = new BufferedWriter(
-                new FileWriter("\"src/main/LlanquihueTourApp/src/resources/tours.txt\"")) ){
+                new FileWriter("src/main/LlanquihueTourApp/src/resources/tours.txt",true)) ){
+
+            escribir.write(tour.getNombre()+","+tour.getTipo()+","+tour.getPrecio());
 
 
         }catch (FileNotFoundException e){
