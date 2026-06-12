@@ -40,9 +40,9 @@ public class LoadTours {
                             }
                         }
 
-                        if(tieneVacio == false){
+                        if(tieneVacio == false){ //si no tienen vacio crea y guarda los objetos Tour.
 
-                            try {
+                            try { //manejo de errores al parsear
                                 double precio = Double.parseDouble(listAux[2]);
                                 listaTour.add(new Tour(listAux[0],listAux[1],precio));
                                 contadorBuenas++; //cuenta líneas leídas correctamente
@@ -55,7 +55,7 @@ public class LoadTours {
 
 
 
-                        }else{
+                        }else{ //si tiene vacio, guarda la liena y guarda el error.
                             contadorError++;
                             lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Contiene Vacio\n");
                         }
@@ -73,7 +73,7 @@ public class LoadTours {
             }
 
 
-        }catch(FileNotFoundException e){
+        }catch(FileNotFoundException e){ // si no encuentra el archivo arroja error.
             lineasError.setLength(0);
             lineasError.append("Error Fatal: Archivo no encontrado");
             contadorError++;
@@ -84,21 +84,23 @@ public class LoadTours {
             lineasError.append("Error Fatal: Error al leer el archivo");
         }
         lineasError.append("------------------------");
-        lineasError.append("\nSTATUS");
+        lineasError.append("\nSTATUS"); //status al cargar desde txt
         lineasError.append("\nLineas cargadas con exito: ").append(contadorBuenas);
         lineasError.append("\nLineas con errores: ").append(contadorError);
         lineasError.append("\n------------------------\n");
 
-        if(contadorError ==0 ){
+        if(contadorError ==0 ){ //si el contador de error esta en 0, se cargaron todos los datos
             lineasError.setLength(0);
             lineasError.append("Datos cargados satisfactoriamente");
+            lineasError.append("\nLineas cargadas con exito: ").append(contadorBuenas);
         }
 
-        if(contadorBuenas == 0){
-            lineasError.append("\nNo se cargaron datos\n");
+        if(contadorBuenas == 0){    //si el contador de buenas esta en 0, no se cargaron datos
+            lineasError.append("\nNo se cargaron datos, el archivo esta vacio o contiene errores");
+            lineasError.append("\nLineas con errores: ").append(contadorError);
         }
 
-        System.out.println(lineasError);
+        System.out.println(lineasError); //muetra por consola todos los datos en error y el status.
         return listaTour;
     }
 
