@@ -1,7 +1,9 @@
-Tour1,escalada,1.0
-sdasd,jiji,20000
+Lago Petrolhue,Raffting,4000.0
+Volcan Osorno,Trekking ,20000
 asdas,   ,sdas
-sdasd, sdasd,1000
+Restaurant Llanquihue, Gastronomico,1300
 sdasd,asdasd,asd
-edsfsd
+
 dfsdfd,reret,123,fgdf
+Puente Colgante, Gastronomico,1500
+Sauce lloron, Gastronomico,500
