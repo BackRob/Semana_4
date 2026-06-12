@@ -11,8 +11,8 @@ public class Main {
     public static void main(String[] args) {
         ArrayList <Tour> listaTours = LoadTours.cargarTours();
 
-        for (Tour tour : listaTours){
-            System.out.println(tour);
-        }
+//        for (Tour tour : listaTours){
+//            System.out.println(tour);
+//        }
     }
 }

@@ -32,7 +32,6 @@ public class LoadTours {
                     listAux = linea.split("\\s*,\\s*"); //aplica split
 
                     if(listAux.length==3){ //si no tiene las 3 variables arroja error
-                        contadorBuenas++; //cuenta lineas leidas correctamente
                         boolean tieneVacio=false;
 
                         for(String list : listAux){ //verifica que no esten vacias las variables a leer
@@ -46,10 +45,11 @@ public class LoadTours {
                             try {
                                 double precio = Double.parseDouble(listAux[2]);
                                 listaTour.add(new Tour(listAux[0],listAux[1],precio));
+                                contadorBuenas++; //cuenta líneas leídas correctamente
 
 
                             }catch (NumberFormatException e) {
-                                lineasError.append("Linea: ").append(linea).append("| N").append(contadorlineas).append("|Error: Error en Formato\n");
+                                lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Error en Formato\n");
                                 contadorError++;
                             }
 
@@ -57,14 +57,14 @@ public class LoadTours {
 
                         }else{
                             contadorError++;
-                            lineasError.append("Linea: ").append(linea).append("| N").append(contadorlineas).append("|Error: Contiene Vacio\n");
+                            lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Contiene Vacio\n");
                         }
 
                     }else if(listAux.length>3){
-                        lineasError.append("Linea: ").append(linea).append("| N").append(contadorlineas).append("|Error: Contiene mas datos\n");
+                        lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Contiene mas datos\n");
                         contadorError++;
                     }else if(listAux.length<3){
-                        lineasError.append("Linea: ").append(linea).append("| N").append(contadorlineas).append("|Error: Contiene menos datos\n");
+                        lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Contiene menos datos\n");
                         contadorError++;
                     }
                 }
@@ -83,12 +83,15 @@ public class LoadTours {
             lineasError.setLength(0);
             lineasError.append("Error Fatal: Error al leer el archivo");
         }
-
         lineasError.append("------------------------");
+        lineasError.append("\nSTATUS");
+        lineasError.append("\nLineas cargadas con exito: ").append(contadorBuenas);
+        lineasError.append("\nLineas con errores: ").append(contadorError);
+        lineasError.append("\n------------------------\n");
 
         if(contadorError ==0 ){
             lineasError.setLength(0);
-            lineasError.append("Datos cargados Satisfactoriamente");
+            lineasError.append("Datos cargados satisfactoriamente");
         }
 
         if(contadorBuenas == 0){
