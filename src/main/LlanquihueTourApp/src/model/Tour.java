@@ -19,9 +19,22 @@ public class Tour {
 
 
     //Sets
-    public void setTipo(String tipo) {this.tipo = tipo;}
-    public void setPrecio(double precio) {this.precio = precio;}
-    public void setNombre(String nombre) {this.nombre = nombre;}
+    public void setTipo(String tipo) {
+        if(tipo != null && !tipo.trim().isEmpty()) {
+            this.tipo = tipo;
+        }
+    }
+
+    public void setPrecio(double precio) {
+        if(precio >= 0){
+            this.precio = precio;
+        }
+    }
+    public void setNombre(String nombre) {
+        if (nombre!=null && !nombre.trim().isEmpty()) {
+            this.nombre = nombre;
+        }
+    }
 
     //Gets
     public String getTipo() {return tipo;}
@@ -32,8 +45,8 @@ public class Tour {
     @Override
     public String toString() {
         return "Tour{" +
-                "nombre='" + nombre + '\'' +
-                ", tipo='" + tipo + '\'' +
+                "nombre=" + nombre +
+                ", tipo=" + tipo +
                 ", precio=" + precio +
                 '}';
     }

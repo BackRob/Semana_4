@@ -1,9 +1,8 @@
 Lago Petrolhue,Raffting,4000.0
 Volcan Osorno,Trekking ,20000
-asdas,   ,sdas
-Restaurant Llanquihue, Gastronomico,1300
-sdasd,asdasd,asd
-
-dfsdfd,reret,123,fgdf
+lago puyehue, Termas,10000
+Volcan Osorno,   ,100.0
+Restaurant Llanquihue, Gastronomico,13000
+Rio Calle Calle,Raffing,15000.0
 Puente Colgante, Gastronomico,1500
-Sauce lloron, Gastronomico,500
+Queule,Pesca deportiva,25000.0
