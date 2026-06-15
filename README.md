@@ -17,15 +17,24 @@ Aplicación básica desarrollada en Java como parte de la actividad de Programac
 
 ## 🏗️ Estructura del proyecto
 
-src/
-├── data/
-│    ├── SaveTours.java
-│    └── LoadTours.java
-├── model/
-│    └── Tour.java
+Semana_4/
+│
+├── src/
+│   ├── data/
+│   │    ├── SaveTours.java
+│   │    └── LoadTours.java
+│   │
+│   ├── model/
+│   │    └── Tour.java
+│   │
+│   ├── ui/
+│   │    └── Main.java
+│
 ├── resources/
-│    └── tours.txt
-└── main/
+│   └── tours.txt
+│
+├── README.md
+└── .gitignore
 
 ---
 
