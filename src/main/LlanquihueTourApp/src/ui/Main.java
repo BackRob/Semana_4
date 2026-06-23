@@ -7,7 +7,7 @@ public class Main {
         GestionDatos gestor = new GestionDatos();
         gestor.buscarNombre("lago petrolhue");
         gestor.buscarTipo("gastronomico");
-        gestor.filtrarPrecio(4000,">");
+        gestor.filtrarPrecio(4000,"=<");
 
     }
 }

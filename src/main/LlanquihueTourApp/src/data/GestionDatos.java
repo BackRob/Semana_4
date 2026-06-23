@@ -183,9 +183,13 @@ public class GestionDatos {
 
     //Metodo para filtrar recibiendo el precio y el operador
     public void filtrarPrecio(double precio,String operador){
-        StringBuilder sb = new StringBuilder("Precio Buscado: ").append(precio).append(" | Operador: ");
-                sb.append(operador).append("\n");
+        StringBuilder sb = new StringBuilder("Filtro Aplicado: Precio ").append(operador).append(" ").append(precio);
+                sb.append("\n");
         sb.append("----Filtrado----\n");
+        if (precio<0 || operador==null || operador.trim().isEmpty()){
+            System.out.println("ERROR: Error en argumentos, Por favor ingresar datos validos para filtrar");
+            return;
+        }
 
         int contador = 0;
         for (Tour tour : listaTour) {
@@ -196,7 +200,7 @@ public class GestionDatos {
                     contador++;
                     break;
 
-                case ">=":
+                case ">=","=>":
                     if (tour.getPrecio() >= precio) sb.append(tour).append("\n");
                     contador++;
                     break;
@@ -206,13 +210,17 @@ public class GestionDatos {
                     contador++;
                     break;
 
-                case "<=":
+                case "<=", "=<":
                     if (tour.getPrecio() <= precio) sb.append(tour).append("\n");
                     contador++;
                     break;
             }
         }
 
+        if (contador==0){
+            sb.setLength(0);
+            sb.append("SIN DATOS QUE CUMPLAN CON EL FILTRO\n");
+        }
 
 
         System.out.println(sb);
