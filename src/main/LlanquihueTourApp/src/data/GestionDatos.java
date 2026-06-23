@@ -35,12 +35,13 @@ public class GestionDatos {
                         boolean tieneVacio=false;
 
                         for(String list : listAux){ //verifica que no esten vacias las variables a leer
-                            if(list.trim().isEmpty()){
+                            if (list.trim().isEmpty()) {
                                 tieneVacio = true;
+                                break;
                             }
                         }
 
-                        if(tieneVacio == false){ //si no tienen vacio crea y guarda los objetos Tour.
+                        if(!tieneVacio){ //si no tienen vacio crea y guarda los objetos Tour.
 
                             try { //manejo de errores al parsear
                                 double precio = Double.parseDouble(listAux[2]);
@@ -63,7 +64,7 @@ public class GestionDatos {
                     }else if(listAux.length>3){
                         lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Contiene mas datos\n");
                         contadorError++;
-                    }else if(listAux.length<3){
+                    }else {
                         lineasError.append("Linea Nº").append(contadorlineas).append(": ").append(linea).append("|Error: Contiene menos datos\n");
                         contadorError++;
                     }
@@ -110,6 +111,8 @@ public class GestionDatos {
         if (tour != null) {
             try (BufferedWriter escribir = new BufferedWriter(
                     new FileWriter("src/main/LlanquihueTourApp/src/resources/tours.txt", true))) {
+                //for(Tour t : listaTour){}
+
                 escribir.write(tour.getNombre() + "," + tour.getTipo() + "," + tour.getPrecio());
                 escribir.newLine();
                 System.out.println("Archivo guardado con exito");
@@ -119,7 +122,7 @@ public class GestionDatos {
                 System.out.println("ERROR: Archivo no encontrado");
 
             } catch (IOException e) {
-                System.out.println("ERROR: Errror al esribir en el archivo");
+                System.out.println("ERROR: Error al escribir en el archivo");
             }
         }else{
             System.out.println("Error: TOUR null");
@@ -127,12 +130,41 @@ public class GestionDatos {
 
     }
 
+    //Metodo para sobreescribir linea (Trasladando todo el arraylist al archivo)
+    public void SobreescribirDatos() {
+        int contadorExito = 0;
+
+        try (BufferedWriter escribir = new BufferedWriter(
+                new FileWriter("src/main/LlanquihueTourApp/src/resources/tours.txt"))) {
+            for (Tour tour : listaTour) {
+                escribir.write(tour.getNombre() + "," + tour.getTipo() + "," + tour.getPrecio());
+                escribir.newLine();
+                contadorExito++;
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("ERROR: Archivo no encontrado");
+
+        } catch (IOException e) {
+            System.out.println("ERROR: Error al escribir en el archivo");
+        }
+
+        if (contadorExito == listaTour.size()) {
+            System.out.println("Archivo Sobreescrito con exito");
+        }else{
+            System.out.println("ERROR: Ocurrieron errores al escribir en el archivo .txt");
+        }
+
+
+
+    }
+
+
     //Metodo para buscar por nombre y mostrar por consola
     public void buscarNombre(String nombre){
         int contadorCoincidencias = 0;
         StringBuilder sb = new StringBuilder("Nombre Buscado: ").append(nombre).append("\n");
         sb.append("----COINCIDENCIAS----\n");
-        if (listaTour!=null){
+        if (!nombre.trim().isEmpty()){
             for(Tour tour:listaTour){
                 if(tour.getNombre().equalsIgnoreCase(nombre)){
                     contadorCoincidencias++;
@@ -141,7 +173,7 @@ public class GestionDatos {
             }
 
         }else{
-            System.out.println("ERROR: Lista nula");
+            System.out.println("ERROR: Filtro ingresado vacio");
             return;
         }
 
@@ -159,7 +191,7 @@ public class GestionDatos {
         int contadorCoincidencias = 0;
         StringBuilder sb = new StringBuilder("Tipo Buscado: ").append(tipo).append("\n");
         sb.append("----COINCIDENCIAS----\n");
-        if (listaTour!=null){
+        if (!tipo.trim().isEmpty()){
             for(Tour tour:listaTour){
                 if(tour.getTipo().equalsIgnoreCase(tipo)){
                     contadorCoincidencias++;
@@ -168,7 +200,7 @@ public class GestionDatos {
             }
 
         }else{
-            System.out.println("ERROR: Lista nula");
+            System.out.println("ERROR: Filtro ingresado vacio");
             return;
         }
 
