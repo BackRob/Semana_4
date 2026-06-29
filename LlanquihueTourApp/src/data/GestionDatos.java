@@ -21,7 +21,7 @@ public class GestionDatos {
         int contadorBuenas = 0;
         int contadorlineas = 0;
         int contadorError = 0;
-        try(BufferedReader leer = new BufferedReader(new FileReader("src/main/LlanquihueTourApp/src/resources/tours.txt"))){   //abre el archivo y arroja error si no encuentra
+        try(BufferedReader leer = new BufferedReader(new FileReader("LlanquihueTourApp/src/resources/tours.txt"))){   //abre el archivo y arroja error si no encuentra
             String[] listAux; //lista para guardar split
             String linea; //variable auxiliar para consumir txt
 
@@ -101,16 +101,15 @@ public class GestionDatos {
             lineasError.append("\nLineas con errores: ").append(contadorError);
         }
 
-        System.out.println(lineasError); //muetra por consola todos los datos en error y el status.
+        System.out.println(lineasError); //muestra por consola todos los datos en error y el status.
     }
-
 
 
     //Metodo para guardar datos
     public void guardarDatos(Tour tour){
         if (tour != null) {
             try (BufferedWriter escribir = new BufferedWriter(
-                    new FileWriter("src/main/LlanquihueTourApp/src/resources/tours.txt", true))) {
+                    new FileWriter("LlanquihueTourApp/src/resources/tours.txt", true))) {
                 //for(Tour t : listaTour){}
 
                 escribir.write(tour.getNombre() + "," + tour.getTipo() + "," + tour.getPrecio());
@@ -135,7 +134,7 @@ public class GestionDatos {
         int contadorExito = 0;
 
         try (BufferedWriter escribir = new BufferedWriter(
-                new FileWriter("src/main/LlanquihueTourApp/src/resources/tours.txt"))) {
+                new FileWriter("LlanquihueTourApp/src/resources/tours.txt"))) {
             for (Tour tour : listaTour) {
                 escribir.write(tour.getNombre() + "," + tour.getTipo() + "," + tour.getPrecio());
                 escribir.newLine();
